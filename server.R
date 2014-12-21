@@ -8,11 +8,7 @@ shinyServer(function(input, output) {
   output$plot <- renderPlot({
     data <- na.omit(movies)
     data <- data[which(data$year > 1969 & data$votes > 500 & data$budget > 0),]
-    # Render a barplot
-    #barplot(WorldPhones[,input$region]*1000, 
-    #        main=input$year,
-    #        ylab="Avg Rating",
-    #        xlab="Budget")
+
     data <- data[which(data$year>=input$year[1] & data$year<=input$year[2]),]
     if (input$genre != "All"){
       data <- data[data[[input$genre]] == 1,]
